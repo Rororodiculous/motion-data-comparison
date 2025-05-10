@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Velocity Comparison from Position vs Acceleration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f8f8f8;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    textarea {
+      width: 100%;
+      height: 400px;
+      font-family: monospace;
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+  <h2>Position vs Acceleration Derived Velocity Generator (CSV)</h2>
+  <p>This tool simulates a car in constant linear motion. It generates a set of <strong>position measurements</strong> (with smooth noise) and <strong>acceleration measurements</strong> (with more jitter), mimicking real-world sensor tradeoffs.</p>
+  <button onclick="generateData()">Generate New Data Set</button>
+  <textarea id="output" readonly></textarea>
+
+  <script>
+    function generateData() {
+      const numPoints = 25;
+      const dt = 0.5; // 0.5 second intervals
+      const aTrue = 0.5 + Math.random(); // True constant acceleration between 0.5 - 1.5 m/s^2
+      const v0 = Math.random() * 2; // Initial velocity between 0 and 2 m/s
+      const x0 = 0; // Starting at 0 for simplicity
+
+      let output = `Simulated Motion Data\nVelocity Comparison via Derivatives and Integrals\n`;
+      output += `True Acceleration: ${aTrue.toFixed(3)} m/s^2\nInitial Velocity: ${v0.toFixed(3)} m/s\n\n`;
+      output += `Time,Position,Acceleration\n`;
+
+      for (let i = 0; i < numPoints; i++) {
+        const t = i * dt;
+
+        // True kinematic values
+        const truePos = x0 + v0 * t + 0.5 * aTrue * t * t;
+        const trueAcc = aTrue;
+
+        // Add realistic sensor behavior
+        const posNoise = (Math.random() * 0.05 - 0.025) * truePos; // <5% noise, relatively smooth
+        const accNoise = (Math.random() * 0.2 - 0.1) * trueAcc; // up to +/-10% jittery noise
+
+        const measuredPos = +(truePos + posNoise).toFixed(4);
+        const measuredAcc = +(trueAcc + accNoise).toFixed(4);
+
+        output += `${t.toFixed(2)},${measuredPos},${measuredAcc}\n`;
+      }
+
+      document.getElementById("output").value = output;
+    }
+  </script>
+</body>
+</html>
