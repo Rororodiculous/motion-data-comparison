@@ -38,7 +38,7 @@
 
       let output = `Simulated Motion Data\nVelocity Comparison via Derivatives and Integrals\n`;
       output += `True Acceleration (m/s^2): ${aTrue.toFixed(3)} \nInitial Velocity (m/s): ${v0.toFixed(3)} \n\n`;
-      output += `Time,Position,Acceleration\n`;
+      output += `Time (s),Position (m),Acceleration (m/s^2)\n`;
 
       for (let i = 0; i < numPoints; i++) {
         const t = i * dt;
