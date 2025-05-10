@@ -1,97 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>README - Motion Data Comparison Tool</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
-      line-height: 1.6;
-    }
-    h1, h2 {
-      color: #333;
-    }
-    code {
-      background: #eee;
-      padding: 2px 4px;
-      border-radius: 4px;
-    }
-    pre {
-      background: #f4f4f4;
-      padding: 10px;
-      overflow-x: auto;
-    }
-  </style>
-</head>
-<body>
+# Motion Data Comparison Tool
 
-  <h1>Motion Data Comparison Tool</h1>
+This web-based tool simulates the motion of a car under constant acceleration, providing two types of simulated sensor data:
 
-  <p>This interactive web tool simulates the motion of a car undergoing <strong>constant acceleration</strong> and outputs realistic measurements from two different types of sensors:</p>
-  <ul>
-    <li>A <strong>position sensor</strong> (like GPS or laser tracker) with smooth, small noise</li>
-    <li>An <strong>accelerometer</strong> (like a motion chip inside the car) with jittery, higher-frequency noise</li>
-  </ul>
-  <p>Each dataset is <strong>unique</strong> and allows students to investigate how numerical derivatives and integrals behave in noisy real-world data.</p>
+- **Position data** with low-frequency noise (as from a GPS or rangefinder)
+- **Acceleration data** with higher-frequency jitter (as from an onboard accelerometer)
 
-  <h2>🔍 Learning Objectives</h2>
-  <ul>
-    <li>Compare velocity derived from <strong>position vs. acceleration</strong></li>
-    <li>Understand how <strong>noise characteristics</strong> impact data interpretation</li>
-    <li>Apply <strong>numerical differentiation and integration</strong> in Excel</li>
-    <li>Discuss pros and cons of different sensor types in physical experiments</li>
-  </ul>
+It is designed for physics education, giving students the opportunity to explore how velocity can be derived from different types of data using numerical methods.
 
-  <h2>📈 Simulation Details</h2>
-  <ul>
-    <li>The motion follows: <code>x(t) = x₀ + v₀ * t + 0.5 * a * t²</code></li>
-    <li><strong>True acceleration</strong> and <strong>initial velocity</strong> are randomly chosen each time</li>
-    <li>25 time points at 0.5 s intervals</li>
-    <li>
-      Noise simulation:
-      <ul>
-        <li><strong>Position:</strong> low-frequency, < 5% deviation</li>
-        <li><strong>Acceleration:</strong> jittery, ±10% deviation</li>
-      </ul>
-    </li>
-  </ul>
+## Features
+- Uses the equation:  
+  **x(t) = x₀ + v₀ * t + 1/2 * a * t²**
+- Randomized **true acceleration** between **0.5 and 1.5 m/s²**
+- Randomized **initial velocity** between **0 and 2 m/s**
+- Position data has <5% smooth random noise
+- Acceleration data has up to ±10% jittery noise
+- 25 time points sampled every 0.5 seconds
+- Output is formatted as **CSV** for easy pasting into Excel or Google Sheets
 
-  <h2>💾 Output Format (CSV)</h2>
-  <pre>
+## Format of Output
 Simulated Motion Data
 Velocity Comparison via Derivatives and Integrals
-True Acceleration: 0.927 m/s²
-Initial Velocity: 1.137 m/s
+True Acceleration: 1.021 m/s²
+Initial Velocity: 0.862 m/s
 
 Time,Position,Acceleration
-0.00,0.0012,0.8942
-0.50,0.3812,0.9762
+
+0.00,0.0000,1.0543
+
+0.50,0.2781,0.9312
+
 ...
-  </pre>
 
-  <p>Paste the output into <strong>Excel</strong> to:</p>
-  <ul>
-    <li>Calculate velocity from position (via difference)</li>
-    <li>Calculate velocity from acceleration (via integration)</li>
-    <li>Plot and compare both methods</li>
-  </ul>
 
-  <h2>📁 Recommended Folder Name</h2>
-  <pre>motion-data-comparison</pre>
+## How to Use
+1. Visit the web page  
+2. Click the **"Generate New Data Set"** button  
+3. Copy and paste the output into a spreadsheet  
+4. Use Excel to compute:  
+   - Velocity by differentiating position  
+   - Velocity by integrating acceleration  
+   - Compare the results
 
-  <h2>🌐 Try It Live</h2>
-  <p>Host on GitHub Pages and visit:</p>
-  <pre>https://Rororodiculous.github.io/motion-data-comparison/</pre>
-  <p>Replace <code>yourusername</code> with your GitHub username.</p>
+## Pros and Cons of Each Sensor Type
+- **Position Sensor (e.g., GPS)**  
+  ✅ Smooth results  
+  ❌ May miss rapid changes or be less accurate over short intervals
 
-  <h2>📚 License</h2>
-  <p>MIT License — free to use for education and modification.</p>
+- **Accelerometer**  
+  ✅ Captures rapid dynamics  
+  ❌ Drift and noise accumulate when integrating
 
-  <hr>
-  <p><em>Built to explore real-world data uncertainty in kinematics labs.</em></p>
+Students are encouraged to compare these methods and explore how sensor uncertainty impacts velocity estimates.
 
-</body>
-</html>
+## Access the Tool
+🔗 [Motion Data Comparison Webpage](https://yourusername.github.io/motion-data-comparison/)
+
+> Replace `yourusername` with your GitHub username
+
+## License
+This project is open source and available under the MIT License.
+
+---
+*Developed for real-world physics education in motion analysis.*
