@@ -24,7 +24,7 @@
 </head>
 <body>
   <h2>Position vs Acceleration Derived Velocity Generator (CSV)</h2>
-  <p>This tool simulates a car in constant linear motion. It generates a set of <strong>position measurements</strong> (with smooth noise) and <strong>acceleration measurements</strong> (with more jitter), mimicking real-world sensor tradeoffs.</p>
+  <p>This tool simulates a car in constant linear motion. It generates a set of <strong>position measurements</strong> and <strong>acceleration measurements</strong>, mimicking real-world sensor tradeoffs.</p>
   <button onclick="generateData()">Generate New Data Set</button>
   <textarea id="output" readonly></textarea>
 
@@ -37,7 +37,7 @@
       const x0 = 0; // Starting at 0 for simplicity
 
       let output = `Simulated Motion Data\nVelocity Comparison via Derivatives and Integrals\n`;
-      output += `True Acceleration: ${aTrue.toFixed(3)} m/s^2\nInitial Velocity: ${v0.toFixed(3)} m/s\n\n`;
+      output += `True Acceleration (m/s^2): ${aTrue.toFixed(3)} \nInitial Velocity (m/s): ${v0.toFixed(3)} \n\n`;
       output += `Time,Position,Acceleration\n`;
 
       for (let i = 0; i < numPoints; i++) {
