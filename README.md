@@ -53,9 +53,7 @@ Time,Position,Acceleration
 Students are encouraged to compare these methods and explore how sensor uncertainty impacts velocity estimates.
 
 ## Access the Tool
-🔗 [Motion Data Comparison Webpage](https://yourusername.github.io/motion-data-comparison/)
-
-> Replace `yourusername` with your GitHub username
+🔗 [Motion Data Comparison Webpage](https://Rororodiculous.github.io/motion-data-comparison/)
 
 ## License
 This project is open source and available under the MIT License.
